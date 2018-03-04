@@ -12,7 +12,6 @@ const dbg = debug('app:App')
 
 export default class App {
   constructor () {
-    console.log('🙏 Icons made by UIUXER : https://www.flaticon.com/authors/uiuxer')
     dbg('Init App')
     this.events = []
     this.waitDomReady()
