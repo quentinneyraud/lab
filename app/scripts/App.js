@@ -5,6 +5,7 @@ import BarbaWrapper from './BarbaWrapper'
 import HomePage from './pages/HomePage'
 import SpherePage from './pages/Sphere/SpherePage'
 import CurvePage from './pages/Curve/CurvePage'
+import Barba from 'barba.js'
 
 const DOM_READY_EVENT = 'dom-ready'
 const FONTS_READY_EVENT = 'fonts-ready'
@@ -23,6 +24,10 @@ export default class App {
    */
   start () {
     dbg('start')
+
+    Barba.Dispatcher.on('newPageReady', (currentStatus, oldStatus, container) => {
+      document.body.className = container.id
+    })
 
     new BarbaWrapper({
       cache: false,

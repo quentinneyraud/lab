@@ -17,6 +17,11 @@
   svg {
     width: 30px;
     height: 30px;
-    fill: #2D2D2D;
+    fill: #FFFFFF;
+    transition: fill 0.3s;
   }
+}
+
+.page-home #contact svg {
+  fill: #2D2D2D;
 }
