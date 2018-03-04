@@ -1,6 +1,8 @@
 import Page from './Page'
 import debug from 'debug'
 import { selectClass } from '../utils/index'
+// import Loader from '../Loader'
+import projectsGifs from '../../img/*.gif'
 
 const dbg = debug('app:HomePage')
 
@@ -12,11 +14,26 @@ export default class HomePage extends Page {
 
   onEnter () {
     super.onEnter()
+
     this.$els.projectItems.forEach((projectItem) => {
       const p = projectItem.querySelectorAll('p')
       TweenMax.set(p, {
-        yPercent: 100
+        y: p[0].offsetHeight
       })
+
+      let image = new Image()
+      TweenMax.set(image, {
+        autoAlpha: 0
+      })
+
+      image.onload = () => {
+        projectItem.getElementsByTagName('figure')[0].appendChild(image)
+        TweenMax.to(image, 0.5, {
+          autoAlpha: 1
+        })
+      }
+
+      image.src = projectsGifs[projectItem.id]
     })
   }
 
@@ -40,7 +57,7 @@ export default class HomePage extends Page {
   onMouseEnter (e) {
     const technos = e.target.querySelectorAll('p')
     TweenMax.to(technos, 0.15, {
-      yPercent: 0,
+      y: 0,
       ease: Power2.easeOut
     })
   }
@@ -48,7 +65,7 @@ export default class HomePage extends Page {
   onMouseLeave (e) {
     const technos = e.target.querySelectorAll('p')
     TweenMax.to(technos, 0.2, {
-      yPercent: 100
+      y: technos[0].offsetHeight
     }, 0.05)
   }
 }

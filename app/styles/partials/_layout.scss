@@ -1,1 +1,27 @@
+canvas {
+  // Fix scroll issue
+  vertical-align: middle;
+}
 
+.page-header {
+  position: fixed;
+  top: 25px;
+  left: 25px;
+
+  .home-icon {
+    display: inline-block;
+    vertical-align: middle;
+    width: 40px;
+    height: 40px;
+    margin-right: 25px;
+    fill: #FFF;
+  }
+
+  .page-title {
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: 3px;
+    color: #FFF;
+    text-transform: capitalize;
+  }
+}
