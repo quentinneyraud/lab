@@ -81,6 +81,7 @@
     "bootstrap": "4.0.0-alpha.6",
     "domready": "^1.0.8",
     "gsap": "^1.20.4",
+    "three": "^0.90.0",
     "webfontloader": "^1.6.28"
   }
 }

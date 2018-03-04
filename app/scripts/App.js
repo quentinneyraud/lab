@@ -3,6 +3,7 @@ import domReady from 'domready'
 import WebFont from 'webfontloader'
 import BarbaWrapper from './BarbaWrapper'
 import HomePage from './pages/HomePage'
+import SpherePage from './pages/Sphere/SpherePage'
 
 const DOM_READY_EVENT = 'dom-ready'
 const FONTS_READY_EVENT = 'fonts-ready'
@@ -29,6 +30,7 @@ export default class App {
       refreshOnSameHrefClick: false
     })
       .match('HomePage', new HomePage())
+      .match('SpherePage', new SpherePage())
       .start()
   }
 
