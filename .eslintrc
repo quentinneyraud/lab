@@ -1,0 +1,16 @@
+{
+  "extends": [
+    "standard"
+  ],
+  "plugins": [
+    "dependencies"
+  ],
+  "env": {
+    "browser": true
+  },
+  "rules": {
+    "dependencies/case-sensitive": 1,
+    "arrow-parens": 0,
+    "no-undef": 0
+  }
+}

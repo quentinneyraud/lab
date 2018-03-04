@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  {% include head.html %}
+  <link rel="stylesheet" href="../styles/main.scss">
+</head>
+
+<body>
+
+{% capture svgFileExists %}{% file_exists _includes/svg.html %}{% endcapture %}
+{% if svgFileExists == "true" %}
+<div class="svg-list">
+  {% include svg.html %}
+</div>
+{% endif %}
+
+{% include header.html %}
+
+<main id="barba-wrapper">
+  {{ content }}
+</main>
+
+<script src="../scripts/main.js"></script>
+</body>
+</html>

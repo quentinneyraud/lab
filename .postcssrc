@@ -1,0 +1,23 @@
+{
+  "modules": false,
+  plugins: {
+    "autoprefixer": {
+      add: true,
+      remove: true,
+      browsers: ['last 2 versions']
+    },
+    "css-mqpacker": {
+      sort: true
+    },
+    "cssnano": {
+      "preset": [
+        "advanced",
+        {
+          "discardComments": {
+            "removeAll": true
+          }
+        }
+       ]
+    }
+  }
+}
