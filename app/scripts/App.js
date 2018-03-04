@@ -30,7 +30,7 @@ export default class App {
     })
 
     new BarbaWrapper({
-      cache: false,
+      cache: true,
       prefetch: true,
       navId: null,
       refreshOnSameHrefClick: false
