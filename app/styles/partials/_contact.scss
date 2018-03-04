@@ -1,0 +1,22 @@
+#contact {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+
+  li {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 5px;
+
+    &:nth-child(2) svg {
+      height: 25px;
+      width: 25px;
+    }
+  }
+
+  svg {
+    width: 30px;
+    height: 30px;
+    fill: #2D2D2D;
+  }
+}

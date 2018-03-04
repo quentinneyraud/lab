@@ -12,7 +12,7 @@ const DEFAULT_OPTIONS = {
   containerId: 'sphere',
   vertexShaderId: 'vertexShader',
   fragmentShaderId: 'fragmentShader',
-  radius: 0,
+  radius: 40,
   scale: 0,
   x: 0,
   vertices: 400

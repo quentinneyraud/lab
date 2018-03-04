@@ -4,6 +4,7 @@ import WebFont from 'webfontloader'
 import BarbaWrapper from './BarbaWrapper'
 import HomePage from './pages/HomePage'
 import SpherePage from './pages/Sphere/SpherePage'
+import CurvePage from './pages/Curve/CurvePage'
 
 const DOM_READY_EVENT = 'dom-ready'
 const FONTS_READY_EVENT = 'fonts-ready'
@@ -11,6 +12,7 @@ const dbg = debug('app:App')
 
 export default class App {
   constructor () {
+    console.log('🙏 Icons made by UIUXER : https://www.flaticon.com/authors/uiuxer')
     dbg('Init App')
     this.events = []
     this.waitDomReady()
@@ -31,6 +33,7 @@ export default class App {
     })
       .match('HomePage', new HomePage())
       .match('SpherePage', new SpherePage())
+      .match('CurvePage', new CurvePage())
       .start()
   }
 

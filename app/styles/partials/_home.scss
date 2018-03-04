@@ -1,3 +1,85 @@
 .page-home {
 
+  .project-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 25vh 0;
+  }
+
+  .project-item {
+    position: relative;
+    height: 50vh;
+    min-height: 400px;
+    width: 700px;
+    margin: 60px 0;
+    padding: 15px;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    a {
+      display: inline-block;
+      width: 100%;
+      height: 100%;
+    }
+
+    h2 {
+      z-index: 5;
+      display: inline-block;
+      font-size: 20px;
+      color: #fff;
+      line-height: 28px;
+      writing-mode: vertical-lr;
+      letter-spacing: 1px;
+      margin-right: 20px;
+    }
+
+    .project-infos {
+      display: inline-block;
+      top: 0;
+      color: #fff;
+      vertical-align: top;
+      margin-top: 30px;
+
+      .project-technology {
+        overflow: hidden;
+        padding: 2px;
+
+        p {
+          display: inline-block;
+          text-transform: uppercase;
+          font-weight: bold;
+          font-size: 12px;
+          line-height: 16px;
+        }
+      }
+    }
+
+    figure {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      filter: brightness(1) grayscale(0);
+      margin: 0;
+      @include background-cover();
+      transition: all 0.3s;
+    }
+
+    &:hover figure {
+      filter: brightness(0.2) grayscale(0.5);
+    }
+  }
+
+  #project-sphere figure {
+    background: url('./../img/sphere.gif');
+  }
+
+  #project-curve figure {
+    background: url('./../img/curve.gif');
+  }
 }

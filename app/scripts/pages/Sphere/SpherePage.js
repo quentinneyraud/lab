@@ -14,8 +14,14 @@ export default class SpherePage extends Page {
     const dependencies = [import('three'), import('./Sphere')]
     Promise.all(dependencies).then((res) => {
       this.sphere = new res[1].default(res[0])
+      this.rafId = null
       this.loop()
     })
+  }
+
+  onLeave () {
+    super.onLeave()
+    window.cancelAnimationFrame(this.rafId)
   }
 
   initializeEvents () {
@@ -33,6 +39,6 @@ export default class SpherePage extends Page {
     this.sphere.update()
     this.sphere.render()
 
-    requestAnimationFrame(this.loop.bind(this))
+    this.rafId = requestAnimationFrame(this.loop.bind(this))
   }
 }
