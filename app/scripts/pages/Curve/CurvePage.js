@@ -13,28 +13,12 @@ export default class CurvePage extends Page {
     super.onEnter()
     import('./Curve').then((Curve) => {
       this.curve = new Curve.default()
-      this.rafId = null
-      this.loop()
+      this.curve.start()
     })
   }
 
   onLeave () {
     super.onLeave()
-    window.cancelAnimationFrame(this.rafId)
-  }
-
-  initializeEvents () {
-    super.initializeEvents()
-    window.addEventListener('resize', this.onResize.bind(this))
-  }
-
-  onResize () {
-    this.curve.setCanvasSize()
-  }
-
-  loop () {
-    this.curve.draw()
-
-    this.rafId = requestAnimationFrame(this.loop.bind(this))
+    this.curve.stop()
   }
 }
