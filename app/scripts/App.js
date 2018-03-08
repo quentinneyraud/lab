@@ -5,6 +5,7 @@ import BarbaWrapper from './BarbaWrapper'
 import HomePage from './pages/HomePage'
 import SpherePage from './pages/Sphere/SpherePage'
 import CurvePage from './pages/Curve/CurvePage'
+import SoundPage from './pages/Sound/SoundPage'
 import Barba from 'barba.js'
 
 const DOM_READY_EVENT = 'dom-ready'
@@ -38,6 +39,7 @@ export default class App {
       .match('HomePage', new HomePage())
       .match('SpherePage', new SpherePage())
       .match('CurvePage', new CurvePage())
+      .match('SoundPage', new SoundPage())
       .start()
   }
 

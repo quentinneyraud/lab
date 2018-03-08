@@ -71,9 +71,7 @@ export default class Curve {
 
   render () {
     // Clear
-    this.canvas.context.clearRect(0, 0, this.canvas.width, this.canvas.height)
-    this.canvas.context.fillStyle = '#2D2D2D'
-    this.canvas.context.fillRect(0, 0, this.canvas.width, this.canvas.height)
+    this.canvas.clear()
 
     // Draw each lines
     this.lines.forEach((line, index) => {
