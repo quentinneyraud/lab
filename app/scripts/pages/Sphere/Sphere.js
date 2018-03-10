@@ -22,7 +22,7 @@ export default class Sphere {
   constructor (THREEp, options = {}) {
     THREE = THREEp
     this.options = Object.assign({}, DEFAULT_OPTIONS, options)
-    this.start = Date.now()
+    this.startTime = Date.now()
 
     this.getElements()
 
@@ -30,8 +30,10 @@ export default class Sphere {
     this.createMaterial()
     this.createRenderer()
     this.addCamera()
-    this.addLight()
     this.addMesh()
+
+    this.loopBinded = this.loop.bind(this)
+    window.addEventListener('resize', this.onResize.bind(this))
   }
 
   getElements () {
@@ -49,7 +51,6 @@ export default class Sphere {
   createRenderer () {
     this.renderer = new THREE.WebGLRenderer()
     this.renderer.setSize(this.options.sceneWidth, this.options.sceneHeight)
-    // this.renderer.setClearColorHex(0xffffff, 0)
     this.$els.container.appendChild(this.renderer.domElement)
   }
 
@@ -77,17 +78,6 @@ export default class Sphere {
     this.scene.add(this.camera)
   }
 
-  addLight () {
-    const pointLight =
-      new THREE.PointLight(0xFFFFFF)
-
-    pointLight.position.x = 10
-    pointLight.position.y = 50
-    pointLight.position.z = 130
-
-    this.scene.add(pointLight)
-  }
-
   addMesh () {
     this.sphere = new THREE.Mesh(
       new THREE.SphereGeometry(this.options.radius, this.options.vertices, this.options.vertices),
@@ -98,8 +88,38 @@ export default class Sphere {
     this.scene.add(this.sphere)
   }
 
+  loop () {
+    console.log('tick')
+    this.update()
+    this.render()
+  }
+
+  start () {
+    TweenLite.ticker.addEventListener('tick', this.loopBinded)
+
+    TweenMax.fromTo(this.sphere.scale, 5, {
+      x: 0,
+      y: 0,
+      z: 0
+    }, {
+      x: 1,
+      y: 1,
+      z: 1
+    })
+  }
+
+  stop () {
+    TweenLite.ticker.removeEventListener('tick', this.loopBinded)
+  }
+
+  onResize () {
+    this.camera.aspect = window.innerWidth / window.innerHeight
+    this.camera.updateProjectionMatrix()
+    this.renderer.setSize(window.innerWidth, window.innerHeight)
+  }
+
   update () {
-    this.material.uniforms['time'].value = 0.0001 * (Date.now() - this.start)
+    this.material.uniforms['time'].value = 0.0001 * (Date.now() - this.startTime)
   }
 
   render () {

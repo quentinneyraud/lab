@@ -23,27 +23,13 @@ export default class SoundPage extends Page {
       this.audioElement.addEventListener('canplay', () => {
         this.audioElement.play()
       })
+      this.audioElement.addEventListener('ended', () => {
+        this.playNextTrack()
+      })
 
       this.currentTrackIndex = 0
       this.playCurrentTrack()
     })
-  }
-
-  initializeElements () {
-    super.initializeElements()
-
-    this.$els = {
-      ...this.$els,
-      prevButton: selectId('previous'),
-      nextButton: selectId('next'),
-      trackTitle: selectId('track-title')
-    }
-  }
-
-  initializeEvents () {
-    super.initializeEvents()
-    this.$els.prevButton.addEventListener('click', this.onPrevButtonClick.bind(this))
-    this.$els.nextButton.addEventListener('click', this.onNextButtonClick.bind(this))
   }
 
   onLeave () {
@@ -52,18 +38,12 @@ export default class SoundPage extends Page {
     this.audioElement.pause()
   }
 
-  onPrevButtonClick () {
-    this.currentTrackIndex--
-    this.playCurrentTrack()
-  }
-
-  onNextButtonClick () {
+  playNextTrack () {
     this.currentTrackIndex++
     this.playCurrentTrack()
   }
 
   playCurrentTrack () {
     this.audioElement.src = Object.values(sounds)[this.currentTrackIndex % Object.values(sounds).length]
-    this.$els.trackTitle.innerText = Object.keys(sounds)[this.currentTrackIndex % Object.values(sounds).length]
   }
 }
