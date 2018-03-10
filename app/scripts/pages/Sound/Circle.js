@@ -8,6 +8,12 @@ export default class Circle {
     this.circleStrokeWidth = options.circleStrokeWidth
     this.soundInfluenceOnRadiusCoeff = options.soundInfluenceOnRadiusCoeff
     this.pointsLength = options.pointsLength
+    if (options.followMouse) {
+      window.addEventListener('mousemove', (e) => {
+        this.x = e.clientX
+        this.y = e.clientY
+      })
+    }
   }
 
   render (averageSound) {
