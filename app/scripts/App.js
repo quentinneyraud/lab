@@ -27,11 +27,11 @@ export default class App {
     dbg('start')
 
     Barba.Dispatcher.on('newPageReady', (currentStatus, oldStatus, container) => {
-      document.body.className = container.id
+      document.body.className.replace(/page-*/, container.id)
     })
 
     new BarbaWrapper({
-      cache: true,
+      cache: false,
       prefetch: true,
       navId: null,
       refreshOnSameHrefClick: false

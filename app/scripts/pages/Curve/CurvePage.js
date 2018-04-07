@@ -7,11 +7,20 @@ export default class CurvePage extends Page {
   constructor () {
     super()
     dbg('Init CurvePage')
+    this.depPromise = null
   }
 
   onEnter () {
     super.onEnter()
-    import('./Curve').then((Curve) => {
+    this.depPromise = Promise.all([import('./Curve'), new Promise((resolve) => {
+      window.setTimeout(resolve, 2000)
+    })])
+  }
+
+  onEnterCompleted () {
+    console.log('entercompleted')
+    this.depPromise.then((d) => {
+      let Curve = d[0]
       this.curve = new Curve.default()
       this.curve.start()
     })

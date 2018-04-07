@@ -16,7 +16,7 @@ export default class BarbaWrapper {
    */
   constructor (options) {
     this.options = Object.assign({}, DEFAULT_OPTIONS, options)
-    this.pages = []
+    this.pages = {}
     this.navLinks = (this.options.navId) ? Array.from(document.getElementById(this.options.navId).getElementsByTagName('a')) : null
     return this
   }
@@ -29,9 +29,13 @@ export default class BarbaWrapper {
    * @returns {BarbaWrapper}
    */
   match (namespace, page) {
-    page.initializeBarba(namespace)
-    this.pages.push(page)
+    page.initializeBarba(namespace, this.getPageByNamespace.bind(this))
+    this.pages[namespace] = page
     return this
+  }
+
+  getPageByNamespace (ns) {
+    return this.pages[ns]
   }
 
   /**
@@ -88,7 +92,11 @@ export default class BarbaWrapper {
    * @returns {*}
    */
   getActivePage () {
-    return this.pages.find(page => page.active)
+    for (let index in this.pages) {
+      if (this.pages.hasOwnProperty(index) && this.pages[index].active) {
+        return this.pages[index]
+      }
+    }
   }
 
   /**

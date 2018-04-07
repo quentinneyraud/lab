@@ -89,7 +89,6 @@ export default class Sphere {
   }
 
   loop () {
-    console.log('tick')
     this.update()
     this.render()
   }

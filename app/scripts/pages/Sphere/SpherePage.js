@@ -11,10 +11,16 @@ export default class SpherePage extends Page {
 
   onEnter () {
     super.onEnter()
-    const dependencies = [import('three'), import('./Sphere')]
-    Promise.all(dependencies).then((res) => {
-      this.sphere = new res[1].default(res[0])
-      this.sphere.start()
+    this.depPromise = Promise.all([import('three'), import('./Sphere')])
+  }
+
+  onEnterCompleted () {
+    this.depPromise.then((res) => {
+      // TODO: remove setTimeout() and keep a clean animation homepage->sphere
+      window.setTimeout(() => {
+        this.sphere = new res[1].default(res[0])
+        this.sphere.start()
+      }, 0)
     })
   }
 

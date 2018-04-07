@@ -10,6 +10,7 @@ export default class HomePage extends Page {
   constructor () {
     super()
     dbg('Init HomePage')
+    this.images = {}
   }
 
   onEnter () {
@@ -27,6 +28,7 @@ export default class HomePage extends Page {
       })
 
       image.onload = () => {
+        projectItem.getElementsByTagName('figure')[0].innerHTML = ''
         projectItem.getElementsByTagName('figure')[0].appendChild(image)
         TweenMax.to(image, 0.5, {
           autoAlpha: 1
