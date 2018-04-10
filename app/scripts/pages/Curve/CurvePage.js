@@ -12,16 +12,13 @@ export default class CurvePage extends Page {
 
   onEnter () {
     super.onEnter()
-    this.depPromise = Promise.all([import('./Curve'), new Promise((resolve) => {
-      window.setTimeout(resolve, 2000)
-    })])
+    this.depPromise = Promise.all([import('./Curve')])
   }
 
   onEnterCompleted () {
-    console.log('entercompleted')
     this.depPromise.then((d) => {
-      let Curve = d[0]
-      this.curve = new Curve.default()
+      let Curve = d[0].default
+      this.curve = new Curve()
       this.curve.start()
     })
   }

@@ -7,6 +7,7 @@ import SpherePage from './pages/Sphere/SpherePage'
 import CurvePage from './pages/Curve/CurvePage'
 import SoundPage from './pages/Sound/SoundPage'
 import Barba from 'barba.js'
+import ImageRGBEffectPage from './pages/ImageRGBEffect/ImageRGBEffectPage'
 
 const DOM_READY_EVENT = 'dom-ready'
 const FONTS_READY_EVENT = 'fonts-ready'
@@ -40,6 +41,7 @@ export default class App {
       .match('SpherePage', new SpherePage())
       .match('CurvePage', new CurvePage())
       .match('SoundPage', new SoundPage())
+      .match('RgbPage', new ImageRGBEffectPage())
       .start()
   }
 

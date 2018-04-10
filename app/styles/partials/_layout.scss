@@ -60,3 +60,17 @@ article {
 .page-sphere {
   background: #000000;
 }
+
+.page-rgb {
+  background-color: #2D2D2D;
+
+  .page-content {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+    canvas, img {
+      margin: 100px;
+    }
+  }
+}
